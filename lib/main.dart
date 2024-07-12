@@ -1,15 +1,17 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:goals_ethglobal/providers/user_info_provider.dart';
 import 'package:goals_ethglobal/screens/home_screen.dart';
 import 'package:goals_ethglobal/screens/login_screen.dart';
 import 'package:goals_ethglobal/screens/profile_screen.dart';
 import 'package:goals_ethglobal/screens/projects_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
+  await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
@@ -19,46 +21,49 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Outfit',
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromRGBO(104, 80, 255, 1),
-            primary: const Color.fromRGBO(104, 80, 255, 1),
-            secondary: const Color.fromRGBO(61, 206, 252, 1)),
-        scaffoldBackgroundColor: const Color.fromRGBO(250, 251, 253, 1),
-        inputDecorationTheme: const InputDecorationTheme(
-          hintStyle: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
+    return ChangeNotifierProvider(
+      create: (context) => UserProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          fontFamily: 'Outfit',
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: const Color.fromRGBO(104, 80, 255, 1),
+              primary: const Color.fromRGBO(104, 80, 255, 1),
+              secondary: const Color.fromRGBO(61, 206, 252, 1)),
+          scaffoldBackgroundColor: const Color.fromRGBO(250, 251, 253, 1),
+          inputDecorationTheme: const InputDecorationTheme(
+            hintStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+            prefixIconColor: Color.fromRGBO(119, 119, 119, 1),
           ),
-          prefixIconColor: Color.fromRGBO(119, 119, 119, 1),
+          textTheme: const TextTheme(
+            titleMedium: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+            bodySmall: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+            titleLarge: TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 30,
+            ),
+          ),
+          appBarTheme: const AppBarTheme(
+            titleTextStyle: TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+            ),
+          ),
+          useMaterial3: true,
         ),
-        textTheme: const TextTheme(
-          titleMedium: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-          bodySmall: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
-          titleLarge: TextStyle(
-            fontWeight: FontWeight.normal,
-            fontSize: 30,
-          ),
-        ),
-        appBarTheme: const AppBarTheme(
-          titleTextStyle: TextStyle(
-            color: Colors.black,
-            fontSize: 20,
-          ),
-        ),
-        useMaterial3: true,
+        title: 'Goals App',
+        home: const MyHomePage(),
       ),
-      title: 'Goals App',
-      home: const MyHomePage(),
     );
   }
 }
@@ -76,7 +81,11 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
   }
 
-  Future<void> appInitializer() async {}
+  Future<void> appInitializer() async {
+    await context.read<UserProvider>().initPlatformState();
+
+    final isLogged = context.read<UserProvider>().isLogged;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,9 +99,9 @@ class _MyHomePageState extends State<MyHomePage> {
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
-            final isLogged = true;
+            final isLogged = context.watch<UserProvider>().isLogged;
             // Use isLogged here
-            return isLogged ? MysHomePage() : const LoginScreen();
+            return isLogged ? const MysHomePage() : const LoginScreen();
           }
         });
   }
