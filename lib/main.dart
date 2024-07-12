@@ -1,125 +1,257 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-void main() {
+import 'package:flutter/material.dart';
+import 'package:goals_ethglobal/screens/home_screen.dart';
+import 'package:goals_ethglobal/screens/login_screen.dart';
+import 'package:goals_ethglobal/screens/profile_screen.dart';
+import 'package:goals_ethglobal/screens/projects_screen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:provider/provider.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        fontFamily: 'Outfit',
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromRGBO(104, 80, 255, 1),
+            primary: const Color.fromRGBO(104, 80, 255, 1),
+            secondary: const Color.fromRGBO(61, 206, 252, 1)),
+        scaffoldBackgroundColor: const Color.fromRGBO(250, 251, 253, 1),
+        inputDecorationTheme: const InputDecorationTheme(
+          hintStyle: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+          prefixIconColor: Color.fromRGBO(119, 119, 119, 1),
+        ),
+        textTheme: const TextTheme(
+          titleMedium: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+          bodySmall: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+          titleLarge: TextStyle(
+            fontWeight: FontWeight.normal,
+            fontSize: 30,
+          ),
+        ),
+        appBarTheme: const AppBarTheme(
+          titleTextStyle: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+          ),
+        ),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      title: 'Goals App',
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  @override
+  void initState() {
+    super.initState();
   }
+
+  Future<void> appInitializer() async {}
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    return FutureBuilder(
+        future: appInitializer(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Container(
+                color: Colors.white,
+                child: const Center(child: CircularProgressIndicator()));
+          } else if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          } else {
+            final isLogged = true;
+            // Use isLogged here
+            return isLogged ? MysHomePage() : const LoginScreen();
+          }
+        });
+  }
+}
+
+class MysHomePage extends StatefulWidget {
+  const MysHomePage({super.key});
+
+  @override
+  State<MysHomePage> createState() => _MysHomePageState();
+}
+
+class _MysHomePageState extends State<MysHomePage> {
+  int currentPage = 1;
+
+  @override
+  Widget build(BuildContext context) {
+    Widget page;
+    switch (currentPage) {
+      case 0:
+        page = const ProjectsScreen();
+        break;
+      case 1:
+        page = const HomeScreen();
+        break;
+      case 2:
+        page = const ProfileScreen();
+        break;
+      default:
+        throw UnimplementedError('no widget for $currentPage');
+    }
     return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: Stack(
+        children: [
+          page,
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(20),
+                ),
+                color: Colors.white, // Cor de fundo
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5), // Sombra
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    // Ajuste a sombra vertical aqui
+                  ),
+                ],
+              ),
+              margin: const EdgeInsets.symmetric(
+                  vertical: 15, horizontal: 20), // Margem superior
+              padding: const EdgeInsets.symmetric(
+                  vertical: 5, horizontal: 20), // Padding interno
+              child: Theme(
+                data: ThemeData(
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                ),
+                child: BottomNavigationBar(
+                  backgroundColor: Colors.transparent,
+                  elevation: 0, // Cor de fundo
+                  iconSize: 20,
+
+                  selectedFontSize: 0,
+                  unselectedFontSize: 0,
+                  enableFeedback: false,
+                  onTap: (index) {
+                    setState(() {
+                      currentPage = index;
+                    });
+                  },
+                  currentIndex: currentPage,
+                  items: [
+                    BottomNavigationBarItem(
+                      activeIcon: Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(50),
+                          ),
+                        ),
+                        child: SvgPicture.asset(
+                          'assets/icons/paper.svg',
+                          width: 27,
+                          height: 27,
+                          color: Colors.white,
+                        ),
+                      ),
+                      icon: SvgPicture.asset('assets/icons/paper.svg',
+                          width: 27, height: 27),
+                      label: 'Projects',
+                    ),
+                    BottomNavigationBarItem(
+                      activeIcon: Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(50),
+                          ),
+                        ),
+                        child: SvgPicture.asset(
+                          'assets/icons/home.svg',
+                          width: 27,
+                          height: 27,
+                          color: Colors.white,
+                        ),
+                      ),
+                      icon: SvgPicture.asset('assets/icons/home.svg',
+                          width: 27, height: 27),
+                      label: 'Home',
+                    ),
+                    // BottomNavigationBarItem(
+                    //   activeIcon: Container(
+                    //     padding: const EdgeInsets.all(12),
+                    //     decoration: const BoxDecoration(
+                    //       color: Color.fromRGBO(217, 217, 217, 1),
+                    //       borderRadius: BorderRadius.all(
+                    //         Radius.circular(50),
+                    //       ),
+                    //     ),
+                    //     child: const Icon(Icons.camera_alt_outlined, size: 30, color: Color.fromARGB(255, 68, 68, 68)),
+                    //   ),
+                    //   icon: const Icon(Icons.camera_alt_outlined, size: 30, color: Color.fromARGB(255, 68, 68, 68)),
+                    //   label: 'Camera',
+                    // ),
+                    BottomNavigationBarItem(
+                      activeIcon: Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(50),
+                          ),
+                        ),
+                        child: SvgPicture.asset(
+                          'assets/icons/user.svg',
+                          width: 27,
+                          height: 27,
+                          color: Colors.white,
+                        ),
+                      ),
+                      icon: SvgPicture.asset('assets/icons/user.svg',
+                          width: 27, height: 27),
+                      label: 'Profile',
+                    ),
+                  ],
+                ),
+              ),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
