@@ -8,8 +8,6 @@ import 'package:goals_ethglobal/widgets/home/main_project.dart';
 import 'package:goals_ethglobal/widgets/home/profile_avatar.dart';
 import 'package:goals_ethglobal/widgets/home/project_card.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart';
-import 'package:web3dart/web3dart.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});

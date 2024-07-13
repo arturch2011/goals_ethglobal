@@ -4,9 +4,14 @@ import 'package:goals_ethglobal/providers/user_info_provider.dart';
 
 import 'package:provider/provider.dart';
 
+
+//CRIAR UM BOTAO PRO CARA CCOMPRAR OS TOKENS
+
+//puxar ele pra router de buy_nouns
+
 class Menu extends StatelessWidget {
   const Menu({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
