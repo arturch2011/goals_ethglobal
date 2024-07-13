@@ -55,12 +55,12 @@ class _ProjectCardState extends State<ProjectCard> {
             metaType = goal[18];
             frequency = goal[4];
 
-            if (frequency == 'Diária') {
-              fname = 'dia';
-            } else if (frequency == 'Semanal') {
-              fname = 'semana';
-            } else if (frequency == 'Mensal') {
-              fname = 'mês';
+            if (frequency == 'Daily') {
+              fname = 'day';
+            } else if (frequency == 'Weekly') {
+              fname = 'week';
+            } else if (frequency == 'Monthly') {
+              fname = 'month';
             } else {
               fname = '-';
             }
@@ -98,7 +98,7 @@ class _ProjectCardState extends State<ProjectCard> {
                   ? const Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 8, vertical: 20),
-                      child: Text('Nenhum projeto'),
+                      child: Text('No projects found'),
                     )
                   : Column(
                       children: [
@@ -152,7 +152,7 @@ class _ProjectCardState extends State<ProjectCard> {
                                 ],
                               ),
                               Text(
-                                '$meta $metaType por $fname', // Valor do progresso (substitua pelo valor real)
+                                '$meta $metaType by $fname', // Valor do progresso (substitua pelo valor real)
                                 style: const TextStyle(
                                   fontSize: 15,
                                 ),
@@ -178,7 +178,7 @@ class _ProjectCardState extends State<ProjectCard> {
                                     ),
                                   ),
                                   child: const Text(
-                                    "Participar",
+                                    "Participate",
                                     style: TextStyle(color: Colors.white),
                                   ),
                                 ),
