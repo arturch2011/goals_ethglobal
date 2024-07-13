@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goals_ethglobal/screens/project_details_screen.dart';
 import 'package:goals_ethglobal/utils/eth_utils.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -70,13 +71,13 @@ class _ProjectCardState extends State<ProjectCard> {
         return Expanded(
           child: GestureDetector(
             onTap: () {
-              // Navigator.of(context).push(
-              //   MaterialPageRoute(
-              //     builder: (context) {
-              //       return ProjectDetails(index: index);
-              //     },
-              //   ),
-              // );
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return ProjectDetails(index: index);
+                  },
+                ),
+              );
             },
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 5),

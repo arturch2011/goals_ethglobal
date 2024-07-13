@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:goals_ethglobal/providers/user_info_provider.dart';
+import 'package:goals_ethglobal/screens/wallet_screen.dart';
 import 'package:goals_ethglobal/screens/buy_nouns.dart';
 
 import 'package:provider/provider.dart';
@@ -41,7 +42,7 @@ class Menu extends StatelessWidget {
                   width: 27,
                 ),
                 label: const Text(
-                  'Configurações e privacidade',
+                  'Settings',
                   style: TextStyle(color: Colors.black),
                 ),
                 style: const ButtonStyle(alignment: Alignment.centerLeft),
@@ -50,13 +51,21 @@ class Menu extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: TextButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const Wallet();
+                      },
+                    ),
+                  );
+                },
                 icon: SvgPicture.asset(
                   'assets/icons/wallet.svg',
                   width: 27,
                 ),
                 label: const Text(
-                  'Depositar e resgatar',
+                  'Deposit and withdraw',
                   style: TextStyle(color: Colors.black),
                 ),
                 style: const ButtonStyle(alignment: Alignment.centerLeft),
@@ -71,7 +80,7 @@ class Menu extends StatelessWidget {
                   width: 27,
                 ),
                 label: const Text(
-                  'Favoritos',
+                  'Favorites',
                   style: TextStyle(color: Colors.black),
                 ),
                 style: const ButtonStyle(alignment: Alignment.centerLeft),
@@ -86,7 +95,7 @@ class Menu extends StatelessWidget {
                   width: 27,
                 ),
                 label: const Text(
-                  'Ajuda',
+                  'Help',
                   style: TextStyle(color: Colors.black),
                 ),
                 style: const ButtonStyle(alignment: Alignment.centerLeft),
@@ -101,7 +110,27 @@ class Menu extends StatelessWidget {
                   width: 27,
                 ),
                 label: const Text(
-                  'Perguntas frequentes',
+                  'Frequently asked',
+                  style: TextStyle(color: Colors.black),
+                ),
+                style: const ButtonStyle(alignment: Alignment.centerLeft),
+              ),
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: TextButton.icon(
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const BuyNouns();
+                        }
+                      ),
+                    );
+                },
+                icon: Image.asset('assets/icons/head-saturn.png', width: 27),
+                label: const Text(
+                  'Buy Nouns',
                   style: TextStyle(color: Colors.black),
                 ),
                 style: const ButtonStyle(alignment: Alignment.centerLeft),
@@ -138,7 +167,7 @@ class Menu extends StatelessWidget {
                 width: 27,
               ),
               label: const Text(
-                'Sair',
+                'Log out',
                 textHeightBehavior: TextHeightBehavior(
                     applyHeightToFirstAscent: true,
                     applyHeightToLastDescent: false),

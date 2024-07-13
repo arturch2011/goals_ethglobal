@@ -161,7 +161,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                         ),
                       ),
                       Text(
-                        "Criado por $creator",
+                        "Created by $creator",
                         style: const TextStyle(
                           fontSize: 16,
                           color: Colors.grey,
@@ -190,7 +190,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                           ),
                           const SizedBox(width: 2),
                           Text(
-                            "De $formatStart até $formatEnd",
+                            "By $formatStart to $formatEnd",
                             style: const TextStyle(
                               fontSize: 12,
                               color: Colors.grey,
@@ -230,7 +230,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                                   ),
                                 ),
                                 child: const Text(
-                                  "Participar",
+                                  "Participate",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
@@ -243,7 +243,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                       ),
                       const SizedBox(height: 16),
                       const Text(
-                        "Regras e condições",
+                        "Rules and conditions",
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
@@ -264,7 +264,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                             children: [
                               const Flexible(
                                   child: Text(
-                                "Saiba mais sobre as regras e condições do desafio.",
+                                "Find out more about the rules and conditions of the challenge.",
                               )),
                               const Spacer(),
                               TextButton(
@@ -303,7 +303,7 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                                   ),
                                 ),
                                 child: const Text(
-                                  "Ler",
+                                  "Read",
                                   style: TextStyle(color: Colors.black),
                                 ),
                               )
@@ -390,7 +390,7 @@ class _BottomPopState extends State<BottomPop> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("Valores recomendados", style: TextStyle(fontSize: 18)),
+          const Text("Recomended bet", style: TextStyle(fontSize: 18)),
           const SizedBox(height: 10),
           SizedBox(
             height: 60,
@@ -419,7 +419,7 @@ class _BottomPopState extends State<BottomPop> {
                       ),
                       child: Center(
                         child: Text(
-                          "R\$$value",
+                          "\$$value",
                           style: TextStyle(
                             color: isSelected ? Colors.white : Colors.black,
                             fontSize: 19,
@@ -462,7 +462,7 @@ class _BottomPopState extends State<BottomPop> {
           const SizedBox(height: 5),
           Align(
               alignment: Alignment.centerRight,
-              child: Text("Valor Minimo: R\$${widget.minvalue}",
+              child: Text("Minimum bet: \$${widget.minvalue}",
                   style: const TextStyle(fontSize: 12))),
           const Spacer(),
           SizedBox(

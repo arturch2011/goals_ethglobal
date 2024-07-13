@@ -35,7 +35,7 @@ class ImagePreviewScreen extends StatelessWidget {
                   ), // Espaço flexível (ocupa o espaço que sobra)
                   const Center(
                       child: Text(
-                    "Validação",
+                    "Validation",
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
@@ -68,7 +68,7 @@ class ImagePreviewScreen extends StatelessWidget {
                     children: [
                       Center(
                           child: Text(
-                        "Parece ótimo!",
+                        "Looks nice!",
                         style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
@@ -77,7 +77,7 @@ class ImagePreviewScreen extends StatelessWidget {
                       SizedBox(height: 8), // Espaço entre os textos
                       Center(
                           child: Text(
-                        "Para validar a foto basta clicar em “Enviar”, se não, bora tirar outra...",
+                        "To validate the photo, just click “Send”, if not, let's take another one…",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 15,
@@ -110,7 +110,7 @@ class ImagePreviewScreen extends StatelessWidget {
                               hideLoadingDialog(context);
                               Navigator.of(context)
                                   .popUntil((route) => route.isFirst);
-                              showCheckDialog(context, 'Enviado com sucesso !');
+                              showCheckDialog(context, 'Success !');
                             } catch (e) {
                               hideLoadingDialog(context);
                               showErrorDialog(context, e.toString());
@@ -131,7 +131,7 @@ class ImagePreviewScreen extends StatelessWidget {
                               const EdgeInsets.symmetric(vertical: 16),
                             ),
                           ),
-                          child: const Text('Enviar',
+                          child: const Text('Send',
                               style: TextStyle(color: Colors.white)),
                         ),
                       ),
@@ -156,7 +156,7 @@ class ImagePreviewScreen extends StatelessWidget {
                               const EdgeInsets.symmetric(vertical: 16),
                             ),
                           ),
-                          child: Text('Voltar',
+                          child: Text('Back',
                               style: TextStyle(
                                   color: Theme.of(context).primaryColor)),
                         ),

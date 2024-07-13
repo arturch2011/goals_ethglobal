@@ -83,7 +83,7 @@ class _CameraAppState extends State<CameraApp> {
         ),
       );
     } catch (e) {
-      print("Erro ao capturar a foto: $e");
+      print("Error taking the photo: $e");
     }
   }
 
