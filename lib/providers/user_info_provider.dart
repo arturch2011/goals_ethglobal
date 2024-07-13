@@ -4,7 +4,7 @@ import 'package:web3auth_flutter/web3auth_flutter.dart';
 import 'package:web3auth_flutter/enums.dart' as provid;
 import 'package:web3auth_flutter/input.dart';
 import 'package:web3auth_flutter/output.dart';
-
+import 'package:goals_ethglobal/utils/eth_utils.dart';
 import 'dart:io';
 import 'dart:collection';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -90,7 +90,7 @@ class UserProvider extends ChangeNotifier {
 
     await Web3AuthFlutter.init(Web3AuthOptions(
         clientId:
-            "BGTLCz5ufUVu94MDn5dz8un_EizsF6t1xe8X2nKlmKh6yLYKVhfkMb3Hxv4-rxJvrJA5TaPSmWzcinCw4GJJ3QA",
+            "BLY9wUm3WKroHzCwDZLWv7UPAMmBG8aFpYvHsXBgOJuu_PW-mjmgs12MVoSglwHmFALNeCexabKHdtGmHhm9UGg",
         network: provid.Network.testnet,
         sessionTime: 604800,
         redirectUrl: redirectUrl,
@@ -153,7 +153,7 @@ class UserProvider extends ChangeNotifier {
         'userInfo': userInfo.toJson(),
       },
     );
-    // await getPrivKey(privKey);
+    await getPrivKey(privKey);
     isLogged = true;
     notifyListeners();
   }
@@ -172,7 +172,7 @@ class UserProvider extends ChangeNotifier {
         'userInfo': userInfo.toJson(),
       },
     );
-    // await getPrivKey(privKey);
+    await getPrivKey(privKey);
     isLogged = true;
     notifyListeners();
   }
@@ -191,7 +191,7 @@ class UserProvider extends ChangeNotifier {
         'userInfo': userInfo.toJson(),
       },
     );
-    // await getPrivKey(privKey);
+    await getPrivKey(privKey);
     isLogged = true;
     notifyListeners();
   }
