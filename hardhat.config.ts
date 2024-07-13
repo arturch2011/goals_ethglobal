@@ -26,6 +26,14 @@ const config: HardhatUserConfig = {
         mnemonic: process.env.MNEMONIC || "",
       },
     },
+
+    alfajores: {
+      url: `https://celo-alfajores.infura.io/v3/${process.env.PROJECT_ID}` || "",
+      chainId: 44787,
+      accounts: {
+        mnemonic: process.env.MNEMONIC || "",
+      },
+    },
   },
 
 
@@ -33,6 +41,7 @@ const config: HardhatUserConfig = {
     apiKey: {
       amoy: process.env.ETHERSCAN_API_KEY || "",
       polygon: process.env.ETHERSCAN_API_KEY || "",
+      alfajores: process.env.ALFAJORESSCAN_API_KEY || "",
     },
     customChains: [
       {
@@ -41,6 +50,15 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://api-amoy.polygonscan.com/api",
           browserURL: "https://amoy.polygonscan.com/"
+        }
+      },
+
+      {
+        network: "alfajores",
+        chainId: 44787,
+        urls: {
+          apiURL: "https://api-alfajores.celoscan.io/api",
+          browserURL: "https://alfajores.celoscan.io/"
         }
       }
     ]
