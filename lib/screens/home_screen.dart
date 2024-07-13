@@ -16,7 +16,7 @@ class HomeScreen extends ConsumerWidget {
     return const Row(
       children: [
         Text(
-          'Você também pode gostar',
+          'You May Also Like',
           style: TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.bold,
@@ -133,7 +133,7 @@ class HomeScreen extends ConsumerWidget {
                 ),
                 const SizedBox(width: 10),
                 Text(
-                  'Olá, $firstName!',
+                  'Hello, $firstName!',
                   textHeightBehavior: const TextHeightBehavior(
                       applyHeightToFirstAscent: true,
                       applyHeightToLastDescent: false),

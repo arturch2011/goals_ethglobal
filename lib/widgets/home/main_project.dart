@@ -63,12 +63,12 @@ class _MainProjectInfoState extends State<MainProjectInfo> {
             totalMeta = goal[5].toInt();
             frequency = goal[4];
 
-            if (frequency == 'Diária') {
-              fname = 'dia';
-            } else if (frequency == 'Semanal') {
-              fname = 'semana';
-            } else if (frequency == 'Mensal') {
-              fname = 'mês';
+            if (frequency == 'Daily') {
+              fname = 'day';
+            } else if (frequency == 'Weekly') {
+              fname = 'week';
+            } else if (frequency == 'Monthly') {
+              fname = 'month';
             } else {
               fname = '-';
             }
@@ -76,7 +76,7 @@ class _MainProjectInfoState extends State<MainProjectInfo> {
         }
 
         return (index == -1)
-            ? const Text('Encontre um projeto')
+            ? const Text('Find a project')
             : GestureDetector(
                 onTap: () {
                   // Navigator.of(context).push(
@@ -119,7 +119,7 @@ class _MainProjectInfoState extends State<MainProjectInfo> {
                         ),
                       ),
                       Text(
-                        '$meta $metaType por $fname', // Valor do progresso (substitua pelo valor real)
+                        '$meta $metaType by $fname', // Valor do progresso (substitua pelo valor real)
                         style: const TextStyle(
                           fontSize: 13,
                         ),
@@ -131,14 +131,14 @@ class _MainProjectInfoState extends State<MainProjectInfo> {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
                             return const Text(
-                              'Aposta R\$-- ', // Valor do progresso (substitua pelo valor real)
+                              'Bet R\$-- ', // Valor do progresso (substitua pelo valor real)
                               style: TextStyle(
                                 fontSize: 10,
                               ),
                             );
                           } else if (snapshot.hasError) {
                             return const Text(
-                              'Aposta R\$--', // Valor do progresso (substitua pelo valor real)
+                              'Bet R\$--', // Valor do progresso (substitua pelo valor real)
                               style: TextStyle(
                                 fontSize: 10,
                               ),
@@ -148,7 +148,7 @@ class _MainProjectInfoState extends State<MainProjectInfo> {
                                 myBet[0] / BigInt.from(10).pow(18);
 
                             return Text(
-                              'Aposta R\$$myBetValue ', // Valor do progresso (substitua pelo valor real)
+                              'Bet R\$$myBetValue ', // Valor do progresso (substitua pelo valor real)
                               style: const TextStyle(
                                 fontSize: 10,
                               ),

@@ -46,6 +46,7 @@ dependencies:
             url: https://github.com/Lucasch1/pinata
     carousel_slider: ^4.2.1
     clipboard: ^0.1.3
+    image_picker: ^1.1.2
 
 dev_dependencies:
     flutter_test:
