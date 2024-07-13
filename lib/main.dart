@@ -10,10 +10,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart' as riverpod;
+
+import 'package:goals_ethglobal/utils/eth_utils.dart';
+
 void main() async {
   await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp(const riverpod.ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -85,6 +89,10 @@ class _MyHomePageState extends State<MyHomePage> {
     await context.read<UserProvider>().initPlatformState();
 
     final isLogged = context.read<UserProvider>().isLogged;
+    if (isLogged) {
+      print(context.read<UserProvider>().userInfos[0]['privKey']);
+      await getPrivKey(context.read<UserProvider>().userInfos[0]['privKey']);
+    }
   }
 
   @override
@@ -101,7 +109,34 @@ class _MyHomePageState extends State<MyHomePage> {
           } else {
             final isLogged = context.watch<UserProvider>().isLogged;
             // Use isLogged here
-            return isLogged ? const MysHomePage() : const LoginScreen();
+            return isLogged
+                ? riverpod.Consumer(
+                    builder: (context, ref, child) {
+                      ref.watch(ethUtilsProviders);
+                      final ethUtils = ref.read(ethUtilsProviders.notifier);
+                      Future<void> initGoals() async {
+                        await ethUtils.initialSetup();
+                      }
+
+                      return FutureBuilder(
+                        future: initGoals(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return Container(
+                                color: Colors.white,
+                                child: const Center(
+                                    child: CircularProgressIndicator()));
+                          } else if (snapshot.hasError) {
+                            return Text('Error: ${snapshot.error}');
+                          } else {
+                            return const MysHomePage();
+                          }
+                        },
+                      );
+                    },
+                  )
+                : const LoginScreen();
           }
         });
   }
