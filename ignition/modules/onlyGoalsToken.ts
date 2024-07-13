@@ -1,10 +1,12 @@
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
+import { ethers } from "ethers";
 
-const walletAddr = "0xC4b9190C160253071375c4d3e4f2574E8Bb57FD5"
+const walletAddr = "0x99Fa57D8192814b50Db31717960B07167d6Ee515"
 
 const onlyGoalsToken = buildModule("onlyGoalsToken",  (m) => {
     const token = m.contract("GoalsToken", []);
-    m.call(token, "mint", [walletAddr, 10000000000000000000000000])
+    const amountInWei = ethers.parseEther("1000000");
+    m.call(token, "mint", [walletAddr, amountInWei]);
 
     return { token };
 });
