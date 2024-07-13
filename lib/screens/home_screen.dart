@@ -8,6 +8,8 @@ import 'package:goals_ethglobal/widgets/home/main_project.dart';
 import 'package:goals_ethglobal/widgets/home/profile_avatar.dart';
 import 'package:goals_ethglobal/widgets/home/project_card.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart';
+import 'package:web3dart/web3dart.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -189,28 +191,14 @@ class HomeScreen extends ConsumerWidget {
                         ],
                       ),
                     ),
-                    // Padding(
-                    //   padding: const EdgeInsets.all(3),
-                    //   child: GestureDetector(
-                    //     onTap: () => {},
-                    //     child: const Row(
-                    //       mainAxisAlignment: MainAxisAlignment.end,
-                    //       children: [
-                    //         Text(
-                    //           'Ver todos os meus projetos',
-                    //           style: TextStyle(
-                    //             fontSize: 12,
-                    //           ),
-                    //         ),
-                    //         SizedBox(width: 5),
-                    //         Icon(
-                    //           Icons.arrow_forward_ios_rounded,
-                    //           size: 13,
-                    //         )
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Define the action to be taken when the button is pressed
+                        print("Button Pressed!");
+                      },
+                      child: const Text("Press Me"),
+                    ),
                     const SizedBox(height: 20),
                     const CarouselWithIndicatorDemo(),
                     const SizedBox(height: 20),
@@ -237,3 +225,4 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 }
+
