@@ -44,6 +44,7 @@ dependencies:
     pinata:
         git:
             url: https://github.com/Lucasch1/pinata
+    carousel_slider: ^4.2.1
 
 dev_dependencies:
     flutter_test:
@@ -70,8 +71,8 @@ flutter:
     assets:
         - assets/images/
         - assets/icons/
-        - build/contracts/Goals.json
-        - build/contracts/GoalsToken.json
+        - artifacts/contracts/Goals.sol/Goals.json
+        - artifacts/contracts/GoalsToken.sol/GoalsToken.json
         - .env
 
     # An image asset can refer to one or more resolution-specific "variants", see
