@@ -136,26 +136,6 @@ class Menu extends StatelessWidget {
                 style: const ButtonStyle(alignment: Alignment.centerLeft),
               ),
             ),
-            SizedBox(
-              width: double.infinity,
-              child: TextButton.icon(
-                onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return const BuyNouns();
-                        }
-                      ),
-                    );
-                },
-                icon: Image.asset('assets/icons/head-saturn.png', width: 27),
-                label: const Text(
-                  'Buy Nouns',
-                  style: TextStyle(color: Colors.black),
-                ),
-                style: const ButtonStyle(alignment: Alignment.centerLeft),
-              ),
-            ),
             const Spacer(), // Adiciona um espaço flexível entre os botões e o botão inferior
             TextButton.icon(
               onPressed: () {

@@ -5,3 +5,4 @@ interface INFTBackedToken {
     function redeem(uint256[] calldata tokenIds) external returns (uint256);
     function swap(uint256[] calldata tokensIn, uint256[] calldata tokensOut) external;
 }
+
