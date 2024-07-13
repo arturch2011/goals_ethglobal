@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goals_ethglobal/screens/started_project_screen.dart';
 import 'package:goals_ethglobal/utils/eth_utils.dart';
 import 'package:goals_ethglobal/widgets/home/progress_indicator.dart';
 
@@ -79,15 +80,15 @@ class _MainProjectInfoState extends State<MainProjectInfo> {
             ? const Text('Find a project')
             : GestureDetector(
                 onTap: () {
-                  // Navigator.of(context).push(
-                  //   MaterialPageRoute(
-                  //     builder: (context) {
-                  //       return StartedProject(
-                  //         index: index,
-                  //       );
-                  //     },
-                  //   ),
-                  // );
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return StartedProject(
+                          index: index,
+                        );
+                      },
+                    ),
+                  );
                 },
                 child: Row(children: [
                   FutureBuilder(

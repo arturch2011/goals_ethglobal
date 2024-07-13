@@ -236,55 +236,83 @@ class _StartedProjectState extends State<StartedProject> {
                       return Text('Error: ${snapshot.error}');
                     } else {
                       bool result = snapshot.data as bool;
-                      return result
-                          ? TextButton(
-                              onPressed: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) {
-                                      return CameraApp(index: index);
-                                    },
-                                  ),
-                                );
+                      return TextButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return CameraApp(index: index);
                               },
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        16.0), // Raio dos cantos
-                                  ),
-                                ),
-                                backgroundColor: MaterialStateProperty.all(
-                                  Theme.of(context).primaryColor,
-                                ),
-                                padding: MaterialStateProperty.all(
-                                  const EdgeInsets.symmetric(vertical: 16),
-                                ),
-                              ),
-                              child: const Text('Validate',
-                                  style: TextStyle(color: Colors.white)),
-                            )
-                          : TextButton(
-                              onPressed: () {},
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        16.0), // Raio dos cantos
-                                  ),
-                                ),
-                                backgroundColor: MaterialStateProperty.all(
-                                  Colors.green,
-                                ),
-                                padding: MaterialStateProperty.all(
-                                  const EdgeInsets.symmetric(vertical: 16),
-                                ),
-                              ),
-                              child:
-                                  const Icon(Icons.check, color: Colors.white),
-                            );
+                            ),
+                          );
+                        },
+                        style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                  16.0), // Raio dos cantos
+                            ),
+                          ),
+                          backgroundColor: MaterialStateProperty.all(
+                            Theme.of(context).primaryColor,
+                          ),
+                          padding: MaterialStateProperty.all(
+                            const EdgeInsets.symmetric(vertical: 16),
+                          ),
+                        ),
+                        child: const Text('Validate',
+                            style: TextStyle(color: Colors.white)),
+                      );
+                      // return result
+                      //     ? TextButton(
+                      //         onPressed: () {
+                      //           Navigator.of(context).push(
+                      //             MaterialPageRoute(
+                      //               builder: (context) {
+                      //                 return CameraApp(index: index);
+                      //               },
+                      //             ),
+                      //           );
+                      //         },
+                      //         style: ButtonStyle(
+                      //           shape: MaterialStateProperty.all<
+                      //               RoundedRectangleBorder>(
+                      //             RoundedRectangleBorder(
+                      //               borderRadius: BorderRadius.circular(
+                      //                   16.0), // Raio dos cantos
+                      //             ),
+                      //           ),
+                      //           backgroundColor: MaterialStateProperty.all(
+                      //             Theme.of(context).primaryColor,
+                      //           ),
+                      //           padding: MaterialStateProperty.all(
+                      //             const EdgeInsets.symmetric(vertical: 16),
+                      //           ),
+                      //         ),
+                      //         child: const Text('Validate',
+                      //             style: TextStyle(color: Colors.white)),
+                      //       )
+                      //     : TextButton(
+                      //         onPressed: () {},
+                      //         style: ButtonStyle(
+                      //           shape: MaterialStateProperty.all<
+                      //               RoundedRectangleBorder>(
+                      //             RoundedRectangleBorder(
+                      //               borderRadius: BorderRadius.circular(
+                      //                   16.0), // Raio dos cantos
+                      //             ),
+                      //           ),
+                      //           backgroundColor: MaterialStateProperty.all(
+                      //             Colors.green,
+                      //           ),
+                      //           padding: MaterialStateProperty.all(
+                      //             const EdgeInsets.symmetric(vertical: 16),
+                      //           ),
+                      //         ),
+                      //         child:
+                      //             const Icon(Icons.check, color: Colors.white),
+                      //       );
                     }
                   },
                 ),
