@@ -90,7 +90,7 @@ class UserProvider extends ChangeNotifier {
 
     await Web3AuthFlutter.init(Web3AuthOptions(
         clientId:
-            "BGTLCz5ufUVu94MDn5dz8un_EizsF6t1xe8X2nKlmKh6yLYKVhfkMb3Hxv4-rxJvrJA5TaPSmWzcinCw4GJJ3QA",
+            "BLY9wUm3WKroHzCwDZLWv7UPAMmBG8aFpYvHsXBgOJuu_PW-mjmgs12MVoSglwHmFALNeCexabKHdtGmHhm9UGg",
         network: provid.Network.testnet,
         sessionTime: 604800,
         redirectUrl: redirectUrl,
