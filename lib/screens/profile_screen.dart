@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goals_ethglobal/providers/user_info_provider.dart';
+import 'package:goals_ethglobal/screens/create_screen.dart';
 import 'package:goals_ethglobal/screens/menu_screen.dart';
 import 'package:goals_ethglobal/utils/eth_utils.dart';
 import 'package:goals_ethglobal/widgets/home/main_project.dart';
@@ -18,8 +19,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  String statusSelecionado = 'Ativos';
-  String statusSelecionado2 = 'Andamento';
+  String statusSelecionado = 'Active';
+  String statusSelecionado2 = 'In progress';
   @override
   Widget build(BuildContext context) {
     String? name;
@@ -35,7 +36,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     final String nameFinal;
 
-    name == null ? nameFinal = "Usuário" : nameFinal = name;
+    name == null ? nameFinal = "User" : nameFinal = name;
 
     final String emailFinal;
 
@@ -92,7 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
         if (inProgressGoals.isEmpty) {
           goalsList = const Center(
-            child: Text('Nenhum projeto encontrado'),
+            child: Text('No project found'),
           );
         } else {
           goalsList = SizedBox(
@@ -137,7 +138,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
         if (doneGoals.isEmpty) {
           doneGoalsList = const Center(
-            child: Text('Nenhum projeto encontrado'),
+            child: Text('No project found'),
           );
         } else {
           doneGoalsList = SizedBox(
@@ -182,7 +183,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
         if (doneCreated.isEmpty) {
           doneCreatedList = const Center(
-            child: Text('Nenhum projeto encontrado'),
+            child: Text('No project found'),
           );
         } else {
           doneCreatedList = SizedBox(
@@ -223,7 +224,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
         if (inProgressCreated.isEmpty) {
           startCreatedList = const Center(
-            child: Text('Nenhum projeto encontrado'),
+            child: Text('No project found'),
           );
         } else {
           startCreatedList = SizedBox(
@@ -266,13 +267,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             GestureDetector(
               onTap: () {
-                // Navigator.of(context).push(
-                //   MaterialPageRoute(
-                //     builder: (context) {
-                //       return const CreatePage();
-                //     },
-                //   ),
-                // );
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const CreateScreen();
+                    },
+                  ),
+                );
               },
               child: Container(
                 width: double.infinity,
@@ -288,7 +289,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Criar projeto',
+                      'Create Project',
                       style: TextStyle(
                           color: Color.fromARGB(255, 129, 129, 129),
                           fontSize: 17,
@@ -319,11 +320,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
-                          statusSelecionado2 = 'Andamento';
+                          statusSelecionado2 = 'In progress';
                         });
                       },
                       style: TextButton.styleFrom(
-                        backgroundColor: statusSelecionado2 == 'Andamento'
+                        backgroundColor: statusSelecionado2 == 'In progress'
                             ? Theme.of(context).primaryColor
                             : Colors.white,
                         shape: RoundedRectangleBorder(
@@ -331,9 +332,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                       child: Text(
-                        "Em andamento",
+                        "In progress",
                         style: TextStyle(
-                            color: statusSelecionado2 == 'Andamento'
+                            color: statusSelecionado2 == 'In progress'
                                 ? Colors.white
                                 : Colors.black,
                             fontWeight: FontWeight.bold),
@@ -345,11 +346,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: TextButton(
                       onPressed: () {
                         setState(() {
-                          statusSelecionado2 = 'Finalizados';
+                          statusSelecionado2 = 'Finished';
                         });
                       },
                       style: TextButton.styleFrom(
-                        backgroundColor: statusSelecionado2 == 'Finalizados'
+                        backgroundColor: statusSelecionado2 == 'Finished'
                             ? Theme.of(context).primaryColor
                             : Colors.white,
                         shape: RoundedRectangleBorder(
@@ -357,9 +358,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       ),
                       child: Text(
-                        "Finalizados",
+                        "Finished",
                         style: TextStyle(
-                            color: statusSelecionado2 == 'Finalizados'
+                            color: statusSelecionado2 == 'Finished'
                                 ? Colors.white
                                 : Colors.black,
                             fontWeight: FontWeight.bold),
@@ -372,7 +373,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             const SizedBox(
               height: 10,
             ),
-            statusSelecionado2 == 'Andamento'
+            statusSelecionado2 == 'In progress'
                 ? startCreatedList
                 : doneCreatedList,
           ],
@@ -396,7 +397,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         Center(
                             child: Text(
-                          "Perfil",
+                          "Profile",
                           style: Theme.of(context).textTheme.titleLarge,
                         )),
                         IconButton(
@@ -455,7 +456,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ),
                                     Column(
                                       children: [
-                                        const Text("Projetos"),
+                                        const Text("Projects"),
                                         Text(
                                           "${myGoals.length}",
                                           style: const TextStyle(
@@ -466,7 +467,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ),
                                     Column(
                                       children: [
-                                        const Text("Carteira"),
+                                        const Text("Wallet"),
                                         FutureBuilder(
                                           future: getInfos(),
                                           builder: (context, snapshot) {
@@ -537,7 +538,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 .then((value) {
                                               const snackBar = SnackBar(
                                                 content: Text(
-                                                    'Copiado para a área de transferência'),
+                                                    'Copied to clipboard!'),
                                               );
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(snackBar);
@@ -545,7 +546,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           },
                                           child: Row(children: [
                                             Text(
-                                                'Endereço: ${address.substring(0, 6)}...',
+                                                'Address: ${address.substring(0, 6)}...',
                                                 style: const TextStyle(
                                                     fontSize: 12)),
                                             const SizedBox(width: 5),
@@ -595,11 +596,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: TextButton(
                             onPressed: () {
                               setState(() {
-                                statusSelecionado = 'Ativos';
+                                statusSelecionado = 'Active';
                               });
                             },
                             style: TextButton.styleFrom(
-                              backgroundColor: statusSelecionado == 'Ativos'
+                              backgroundColor: statusSelecionado == 'Active'
                                   ? Theme.of(context).primaryColor
                                   : Colors.white,
                               shape: RoundedRectangleBorder(
@@ -607,9 +608,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                             child: Text(
-                              "Ativos",
+                              "Active",
                               style: TextStyle(
-                                  color: statusSelecionado == 'Ativos'
+                                  color: statusSelecionado == 'Active'
                                       ? Colors.white
                                       : Colors.black,
                                   fontWeight: FontWeight.bold),
@@ -621,11 +622,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: TextButton(
                             onPressed: () {
                               setState(() {
-                                statusSelecionado = 'Concluidos';
+                                statusSelecionado = 'Finished';
                               });
                             },
                             style: TextButton.styleFrom(
-                              backgroundColor: statusSelecionado == 'Concluidos'
+                              backgroundColor: statusSelecionado == 'Finished'
                                   ? Theme.of(context).primaryColor
                                   : Colors.white,
                               shape: RoundedRectangleBorder(
@@ -633,9 +634,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                             child: Text(
-                              "Concluidos",
+                              "Finished",
                               style: TextStyle(
-                                  color: statusSelecionado == 'Concluidos'
+                                  color: statusSelecionado == 'Finished'
                                       ? Colors.white
                                       : Colors.black,
                                   fontWeight: FontWeight.bold),
@@ -647,11 +648,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: TextButton(
                             onPressed: () {
                               setState(() {
-                                statusSelecionado = 'Criados';
+                                statusSelecionado = 'Created';
                               });
                             },
                             style: TextButton.styleFrom(
-                              backgroundColor: statusSelecionado == 'Criados'
+                              backgroundColor: statusSelecionado == 'Created'
                                   ? Theme.of(context).primaryColor
                                   : Colors.white,
                               shape: RoundedRectangleBorder(
@@ -659,9 +660,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                             child: Text(
-                              "Criados",
+                              "Created",
                               style: TextStyle(
-                                  color: statusSelecionado == 'Criados'
+                                  color: statusSelecionado == 'Created'
                                       ? Colors.white
                                       : Colors.black,
                                   fontWeight: FontWeight.bold),
@@ -672,9 +673,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  if (statusSelecionado == 'Ativos')
+                  if (statusSelecionado == 'Active')
                     goalsList
-                  else if (statusSelecionado == 'Concluidos')
+                  else if (statusSelecionado == 'Finished')
                     doneGoalsList
                   else
                     createdGoalsList,

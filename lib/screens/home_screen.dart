@@ -16,7 +16,7 @@ class HomeScreen extends ConsumerWidget {
     return const Row(
       children: [
         Text(
-          'Você também pode gostar',
+          'You May Also Like',
           style: TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.bold,
@@ -133,7 +133,7 @@ class HomeScreen extends ConsumerWidget {
                 ),
                 const SizedBox(width: 10),
                 Text(
-                  'Olá, $firstName!',
+                  'Hello, $firstName!',
                   textHeightBehavior: const TextHeightBehavior(
                       applyHeightToFirstAscent: true,
                       applyHeightToLastDescent: false),
@@ -189,28 +189,14 @@ class HomeScreen extends ConsumerWidget {
                         ],
                       ),
                     ),
-                    // Padding(
-                    //   padding: const EdgeInsets.all(3),
-                    //   child: GestureDetector(
-                    //     onTap: () => {},
-                    //     child: const Row(
-                    //       mainAxisAlignment: MainAxisAlignment.end,
-                    //       children: [
-                    //         Text(
-                    //           'Ver todos os meus projetos',
-                    //           style: TextStyle(
-                    //             fontSize: 12,
-                    //           ),
-                    //         ),
-                    //         SizedBox(width: 5),
-                    //         Icon(
-                    //           Icons.arrow_forward_ios_rounded,
-                    //           size: 13,
-                    //         )
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Define the action to be taken when the button is pressed
+                        print("Button Pressed!");
+                      },
+                      child: const Text("Press Me"),
+                    ),
                     const SizedBox(height: 20),
                     const CarouselWithIndicatorDemo(),
                     const SizedBox(height: 20),
@@ -237,3 +223,4 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 }
+
