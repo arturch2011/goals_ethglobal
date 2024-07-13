@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:goals_ethglobal/providers/user_info_provider.dart';
 import 'package:goals_ethglobal/utils/eth_utils.dart';
+import 'package:goals_ethglobal/utils/filecoin_lighthouse.dart';
 import 'package:goals_ethglobal/utils/pinata_utils.dart';
 import 'package:goals_ethglobal/widgets/loading_popup.dart';
 import 'package:provider/provider.dart' as prov;
@@ -13,6 +16,15 @@ class ImagePreviewScreen extends StatelessWidget {
   final int index;
   const ImagePreviewScreen(
       {super.key, required this.imagePath, required this.index});
+
+  Future<String> sendFileCoins(String imagePath) async {
+    String filePath = imagePath;
+    final response = await uploadFile(filePath);
+    final body = await jsonDecode(response.body);
+    final hash = body['Hash'];
+    print(hash);
+    return hash;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,12 +110,17 @@ class ImagePreviewScreen extends StatelessWidget {
                             showLoadingDialog(context);
 
                             try {
+                              print('Photoooooooooo');
                               String result = await pinFile(imagePath);
-
+                              String filecoinHash =
+                                  await sendFileCoins(imagePath);
                               final String link =
                                   result.substring(8, result.length - 26);
+                              print(result);
+                              print(filecoinHash);
+                              print(link);
                               await ethUtils.updateFrequency(
-                                  BigInt.from(index), link);
+                                  BigInt.from(index), filecoinHash);
                               photoList.removeItem(index);
                               photoList.addItem(PhotoDate(index, dia));
                               await photoList.savePhotoList();
