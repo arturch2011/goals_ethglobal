@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.9.0;
 
-import "./GoalsToken.sol";
+import "./INFTBackedToken.sol";
 
 contract Goals {
     address public owner;
@@ -44,10 +44,11 @@ contract Goals {
 
     mapping(address => uint[]) public myGoals; // Link participant to their goals
     mapping(address => uint[]) public myEnteredGoals; // Link participant to the goals they have entered
-
-    constructor(address _goalsTokenAddr) {
+    INFTBackedToken immutable public nftBackedToken;
+    constructor(address _goalsTokenAddr, address _nftBackedTokenAddr) {
         token = GoalsToken(_goalsTokenAddr);
         owner = msg.sender;
+        nftBackedToken = INFTBackedToken(_nftBackedTokenAddr);
     }
 
     function changeOwner(address _newOwner) public {
