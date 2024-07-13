@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-const apiKey = 'f69f6044.f6bf217c3b564886af9e116a12cc31fd'; // Replace this with your actual API key
+
 // to view image prefix is 'https://gateway.lighthouse.storage/ipfs/$hash'
 
 void examples() async {
