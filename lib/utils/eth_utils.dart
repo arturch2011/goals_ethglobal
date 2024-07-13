@@ -249,7 +249,7 @@ class EthereumUtils extends StateNotifier<bool> {
         ],
         from: _credentials!.address,
       ),
-      chainId: 137,
+      chainId: 44787,
     );
 
     print("Transaction hash: $tran");
@@ -267,7 +267,7 @@ class EthereumUtils extends StateNotifier<bool> {
         parameters: [goalId],
         from: _credentials!.address,
       ),
-      chainId: 137,
+      chainId: 44787,
     );
     print(tran);
 
@@ -288,7 +288,7 @@ class EthereumUtils extends StateNotifier<bool> {
         parameters: [goalId, bigBet],
         from: _credentials!.address,
       ),
-      chainId: 137,
+      chainId: 44787,
     );
     print(tran);
 
@@ -306,7 +306,7 @@ class EthereumUtils extends StateNotifier<bool> {
         parameters: [goalId, frequency],
         from: _credentials!.address,
       ),
-      chainId: 137,
+      chainId: 44787,
     );
     print(tran);
 
@@ -324,7 +324,7 @@ class EthereumUtils extends StateNotifier<bool> {
         parameters: [goalId, participant],
         from: _credentials!.address,
       ),
-      chainId: 137,
+      chainId: 44787,
     );
     print(tran);
 
@@ -342,7 +342,7 @@ class EthereumUtils extends StateNotifier<bool> {
         parameters: [goalId],
         from: _credentials!.address,
       ),
-      chainId: 137,
+      chainId: 44787,
     );
     print(tran);
 
@@ -448,7 +448,7 @@ class EthereumUtils extends StateNotifier<bool> {
           parameters: [spender, amount],
           from: _credentials!.address,
         ),
-        chainId: 137,
+        chainId: 44787,
       );
 
       print(tran);
@@ -488,7 +488,7 @@ class EthereumUtils extends StateNotifier<bool> {
         parameters: [to, amountInWei],
         from: _credentials!.address,
       ),
-      chainId: 137,
+      chainId: 44787,
     );
     print('BBBBBBBBBBBBBBBBBBBBb');
     print(tran);
