@@ -71,8 +71,8 @@ flutter:
     assets:
         - assets/images/
         - assets/icons/
-        - build/contracts/Goals.json
-        - build/contracts/GoalsToken.json
+        - artifacts/contracts/Goals.sol/Goals.json
+        - artifacts/contracts/GoalsToken.sol/GoalsToken.json
         - .env
 
     # An image asset can refer to one or more resolution-specific "variants", see

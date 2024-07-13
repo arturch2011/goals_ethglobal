@@ -106,12 +106,12 @@ class EthereumUtils extends StateNotifier<bool> {
 
   Future<void> getAbi() async {
     String abiStringFile =
-        await rootBundle.loadString("build/contracts/Goals.json");
+        await rootBundle.loadString("artifacts/contracts/Goals.sol/Goals.json");
     var jsonAbi = jsonDecode(abiStringFile);
     _abi = jsonEncode(jsonAbi['abi']);
 
-    String abiStringFileToken =
-        await rootBundle.loadString("build/contracts/GoalsToken.json");
+    String abiStringFileToken = await rootBundle
+        .loadString("artifacts/contracts/GoalsToken.sol/GoalsToken.json");
     var jsonAbiToken = jsonDecode(abiStringFileToken);
     _abiToken = jsonEncode(jsonAbiToken['abi']);
 
