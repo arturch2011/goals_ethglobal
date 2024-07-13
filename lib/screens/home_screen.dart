@@ -64,8 +64,6 @@ class HomeScreen extends ConsumerWidget {
 
     goals = ethUtils.goals;
     myGoals = ethUtils.myEnteredGoals;
-    print("Listaaa  ${myGoals[0]}");
-    // print("homepage: ${goals[0][goals[0].length - 1]}");
     int goalsLength;
     int goalsLength2;
     int lastGoalIndex = -1;

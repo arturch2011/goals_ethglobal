@@ -84,10 +84,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 (element[8].toInt() - DateTime.now().millisecondsSinceEpoch) <
                 0)
             .toList();
-        print(myGoals);
-        print(myGoalsList);
-        print(inProgressGoals);
-        print(doneGoals);
 
         final Widget goalsList;
 

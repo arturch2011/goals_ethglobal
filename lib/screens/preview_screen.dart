@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'dart:io';
-
+import 'package:http/http.dart' as http;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:goals_ethglobal/providers/user_info_provider.dart';
 import 'package:goals_ethglobal/utils/eth_utils.dart';
@@ -22,8 +22,32 @@ class ImagePreviewScreen extends StatelessWidget {
     final response = await uploadFile(filePath);
     final body = await jsonDecode(response.body);
     final hash = body['Hash'];
-    print(hash);
     return hash;
+  }
+
+  Future<bool> aiValidation(String hash, String prompt) async {
+    final url =
+        Uri.parse('https://goals-validator-server.onrender.com/validate-image');
+
+    final headers = {'Content-Type': 'application/json'};
+    final body = jsonEncode({
+      'imageHash': hash,
+      'validationPrompt': prompt,
+    });
+
+    try {
+      final response = await http.post(url, headers: headers, body: body);
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        return data['response']
+            as bool; // Supondo que a API retorne {"result": true/false}
+      } else {
+        throw Exception('Falha na requisição: ${response.statusCode}');
+      }
+    } catch (error) {
+      throw Exception('Erro ao se comunicar com a API: $error');
+    }
   }
 
   @override
@@ -110,15 +134,10 @@ class ImagePreviewScreen extends StatelessWidget {
                             showLoadingDialog(context);
 
                             try {
-                              print('Photoooooooooo');
-                              String result = await pinFile(imagePath);
                               String filecoinHash =
                                   await sendFileCoins(imagePath);
-                              final String link =
-                                  result.substring(8, result.length - 26);
-                              print(result);
-                              print(filecoinHash);
-                              print(link);
+                              bool isValid = await aiValidation(filecoinHash,
+                                  'Is this a red cup? Respond as true or false. It has to be a real image, not a generated one or animated.');
                               await ethUtils.updateFrequency(
                                   BigInt.from(index), filecoinHash);
                               photoList.removeItem(index);

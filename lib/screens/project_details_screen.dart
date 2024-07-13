@@ -586,7 +586,6 @@ class _ConfirmPopState extends State<ConfirmPop> {
                       };
                       var response =
                           await http.post(url, headers: headers, body: config);
-                      print('Response status: ${response.statusCode}');
                       hideLoadingDialog(context);
                       Navigator.of(context).popUntil((route) => route.isFirst);
                       showCheckDialog(context, 'You are on the project!');

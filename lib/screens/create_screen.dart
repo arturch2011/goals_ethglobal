@@ -580,7 +580,7 @@ class _CreateScreenState extends State<CreateScreen> {
                     ],
                   ),
                   const SizedBox(height: 20),
-                  const Text('How can see'),
+                  const Text('Who can see'),
                   SizedBox(
                     height: 60,
                     child: Row(
@@ -745,13 +745,8 @@ class _CreateScreenState extends State<CreateScreen> {
                           BigInt numeroPessoasBigInt =
                               BigInt.from(numeroPessoas);
                           String result = await pinFile(pickedImage!.path);
-                          print("RESULTADOOOOOOOOOOOOOOOOOOOO");
-                          print(result);
                           final String link =
                               result.substring(8, result.length - 26);
-                          print(totalMeta);
-                          print("Linkkkkkkkkkkkkkkkkkkkk");
-                          print(link);
                           imgList.add(link);
 
                           await ethUtils.createGoal(

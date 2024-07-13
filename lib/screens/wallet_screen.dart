@@ -495,8 +495,6 @@ class AlertCheck extends StatelessWidget {
                       EthereumAddress.fromHex(
                           "0x9127e5DD17033540450a0A58bb625C240D93C58e"),
                       BigInt.from(creditos));
-                  print("WITHDRAW TRANSACTION HASHHH:");
-                  print(tx);
 
                   await PaymentManager.makeWithdrawal(BigInt.from(creditos),
                       address, email, DateTime.now(), chavePix);

@@ -31,8 +31,6 @@ class _StartedProjectState extends State<StartedProject> {
         Future<void> getInfos() async {
           progress = await ethUtils.getMyProgress(BigInt.from(index));
           myBet = await ethUtils.getMyBets(BigInt.from(index));
-          print('111111111111111111111 $progress');
-          print("2222222222222222 $myBet");
         }
 
         final goal = ethUtils.goals[0][index];

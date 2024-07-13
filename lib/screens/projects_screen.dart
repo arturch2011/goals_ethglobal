@@ -71,8 +71,6 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
               ],
             );
           } else {
-            print(unstartedGoals[unstartedGoals.length - 1]);
-
             return SafeArea(
                 child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
