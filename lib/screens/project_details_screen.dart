@@ -278,12 +278,12 @@ class _ProjectDetailsState extends State<ProjectDetails> {
                                           height: 200,
                                           child: SingleChildScrollView(
                                             child: Text(
-                                                "Envie $vezes foto por $fname para validar o desafio. Essa foto deve ser nítida e mostrar algum momento de realização do desafio, você não precisa demonstrar cada momento do desafio exemplo se o desafio for correr 5km você não precisa tirar 5 fotos de 1km, basta uma foto que mostre que você correu. Caso a foto não seja nítida ou não mostre o momento de realização do desafio, a foto será invalidada. Caso você não envie a foto voce perderá uma validação. Caso você não conclua o número mínimo de validações de 85% o valor da aposta será distribuído entre os outros participantes. Se você concluir 100% recebera uma recompensa extra em créditos que poderam ser resgatados em R\$."),
+                                                "Send $vezes photos per $fname to validate the challenge. This photo must be clear and show some moment of completing the challenge, you don't need to demonstrate each moment of the challenge, for example, if the challenge is to run 5km, you don't need to take 5 photos of 1km, just one photo that shows that you ran. If the photo is not clear or does not show the moment the challenge was completed, the photo will be invalidated. If you do not send the photo you will lose validation. If you do not complete the minimum number of validations of 85%, the bet amount will be distributed among the other participants. If you complete 100% you will receive an extra reward in credits that can be redeemed in \$"),
                                           ),
                                         ),
                                         actions: <Widget>[
                                           TextButton(
-                                            child: const Text('Fechar'),
+                                            child: const Text('Close'),
                                             onPressed: () {
                                               Navigator.of(context).pop();
                                             },
@@ -442,7 +442,7 @@ class _BottomPopState extends State<BottomPop> {
               });
             },
             decoration: InputDecoration(
-              hintText: 'Outro valor', // Placeholder
+              hintText: 'Another value', // Placeholder
               contentPadding: const EdgeInsets.symmetric(
                   horizontal: 16, vertical: 6), // Espaçamento interno
               border: OutlineInputBorder(
@@ -485,7 +485,7 @@ class _BottomPopState extends State<BottomPop> {
                   const EdgeInsets.symmetric(vertical: 16),
                 ),
               ),
-              child: const Text('Apostar',
+              child: const Text('Bet',
                   style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -537,12 +537,12 @@ class _ConfirmPopState extends State<ConfirmPop> {
         final String frequency = goal[4];
         late String fname;
 
-        if (frequency == 'Diária') {
-          fname = 'dia';
-        } else if (frequency == 'Semanal') {
-          fname = 'semana';
-        } else if (frequency == 'Mensal') {
-          fname = 'mês';
+        if (frequency == 'Daily') {
+          fname = 'day';
+        } else if (frequency == 'Weekly') {
+          fname = 'week';
+        } else if (frequency == 'Monthly') {
+          fname = 'month';
         } else {
           fname = '-';
         }
@@ -557,11 +557,11 @@ class _ConfirmPopState extends State<ConfirmPop> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 30),
-              const Text("Voce deseja apostar", style: TextStyle(fontSize: 22)),
-              Text("R\$${widget.valorFinal}",
+              const Text("You want to bet", style: TextStyle(fontSize: 22)),
+              Text("\$${widget.valorFinal}",
                   style: const TextStyle(
                       fontSize: 22, fontWeight: FontWeight.bold)),
-              Text("em '$meta $metaType por $fname'?",
+              Text("on '$meta $metaType per $fname'?",
                   style: const TextStyle(fontSize: 22)),
               const Spacer(),
               SizedBox(
@@ -589,7 +589,7 @@ class _ConfirmPopState extends State<ConfirmPop> {
                       print('Response status: ${response.statusCode}');
                       hideLoadingDialog(context);
                       Navigator.of(context).popUntil((route) => route.isFirst);
-                      showCheckDialog(context, 'Você entrou no desafio!');
+                      showCheckDialog(context, 'You are on the project!');
                     } catch (e) {
                       hideLoadingDialog(context);
                       showErrorDialog(context, e.toString());
@@ -609,7 +609,7 @@ class _ConfirmPopState extends State<ConfirmPop> {
                       const EdgeInsets.symmetric(vertical: 16),
                     ),
                   ),
-                  child: const Text('Confirmar',
+                  child: const Text('Confirm',
                       style: TextStyle(color: Colors.white)),
                 ),
               ),
@@ -630,7 +630,7 @@ class _ConfirmPopState extends State<ConfirmPop> {
                     ),
                     padding: const EdgeInsets.symmetric(vertical: 16),
                   ),
-                  child: Text('Alterar valor',
+                  child: Text('Switch Value',
                       style: TextStyle(color: Theme.of(context).primaryColor)),
                 ),
               ),
