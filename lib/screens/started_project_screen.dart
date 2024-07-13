@@ -52,24 +52,24 @@ class _StartedProjectState extends State<StartedProject> {
         // final int maxParticipants = goal[16].toInt();
         // final String description = goal[2];
         var monthNames = [
-          'Janeiro',
-          'Fevereiro',
-          'Março',
-          'Abril',
-          'Maio',
-          'Junho',
-          'Julho',
-          'Agosto',
-          'Setembro',
-          'Outubro',
-          'Novembro',
-          'Dezembro'
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December'
         ];
         final int startTime = goal[7].toInt();
         final DateTime startDate =
             DateTime.fromMillisecondsSinceEpoch(startTime);
         final String formatStart =
-            '${startDate.day} de ${monthNames[startDate.month - 1]}';
+            '${startDate.day} of ${monthNames[startDate.month - 1]}';
         final int endTime = goal[8].toInt();
         final DateTime endDate = DateTime.fromMillisecondsSinceEpoch(endTime);
         final double timer = (endTime - DateTime.now().millisecondsSinceEpoch) /
@@ -78,7 +78,7 @@ class _StartedProjectState extends State<StartedProject> {
             (startTime - DateTime.now().millisecondsSinceEpoch) /
                 (1000 * 60 * 60 * 24);
         final String formatEnd =
-            '${endDate.day} de ${monthNames[endDate.month - 1]} de ${endDate.year}';
+            '${endDate.day} of ${monthNames[endDate.month - 1]} of ${endDate.year}';
 
         final String passDays =
             (DateTime.now().millisecondsSinceEpoch - startTime > 0)
@@ -115,21 +115,21 @@ class _StartedProjectState extends State<StartedProject> {
         late String passTime;
         late int totalTime;
 
-        if (frequency == 'Diária') {
+        if (frequency == 'Daily') {
           passTime = passDays;
           totalTime = totalDays;
-          fname = 'dia';
-          fplural = 'Dias';
-        } else if (frequency == 'Semanal') {
+          fname = 'day';
+          fplural = 'Days';
+        } else if (frequency == 'Weekly') {
           passTime = passWeeks;
           totalTime = totalWeeks;
-          fname = 'semana';
-          fplural = 'Semanas';
-        } else if (frequency == 'Mensal') {
+          fname = 'week';
+          fplural = 'Weeks';
+        } else if (frequency == 'Monthly') {
           passTime = passMonths;
           totalTime = totalMonths;
-          fname = 'mês';
-          fplural = 'Mêses';
+          fname = 'month';
+          fplural = 'Months';
         } else {
           passTime = '-';
           totalTime = 0;
@@ -156,7 +156,7 @@ class _StartedProjectState extends State<StartedProject> {
           return Column(
             children: [
               const Text(
-                "Regras e condições",
+                "Rules and Conditions",
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -177,7 +177,7 @@ class _StartedProjectState extends State<StartedProject> {
                     children: [
                       const Flexible(
                           child: Text(
-                        "Saiba mais sobre as regras e condições do desafio.",
+                        "Find out more about the rules and conditions of the challenge.",
                       )),
                       const SizedBox(width: 5),
                       TextButton(
@@ -186,17 +186,17 @@ class _StartedProjectState extends State<StartedProject> {
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                title: const Text('Regras e Condições'),
+                                title: const Text('Rules and Conditions'),
                                 content: SizedBox(
                                   height: 200,
                                   child: SingleChildScrollView(
                                     child: Text(
-                                        "Envie $vezes foto por $fname para validar o desafio. Essa foto deve ser nítida e mostrar algum momento de realização do desafio, você não precisa demonstrar cada momento do desafio exemplo se o desafio for correr 5km você não precisa tirar 5 fotos de 1km, basta uma foto que mostre que você correu. Caso a foto não seja nítida ou não mostre o momento de realização do desafio, a foto será invalidada. Caso você não envie a foto voce perderá uma validação. Caso você não conclua o número mínimo de validações de 85% o valor da aposta será distribuído entre os outros participantes. Se você concluir 100% recebera uma recompensa extra em créditos que poderam ser resgatados em R\$"),
+                                        "Send $vezes photos per $fname to validate the challenge. This photo must be clear and show some moment of completing the challenge, you don't need to demonstrate each moment of the challenge, for example, if the challenge is to run 5km, you don't need to take 5 photos of 1km, just one photo that shows that you ran. If the photo is not clear or does not show the moment the challenge was completed, the photo will be invalidated. If you do not send the photo you will lose validation. If you do not complete the minimum number of validations of 85%, the bet amount will be distributed among the other participants. If you complete 100% you will receive an extra reward in credits that can be redeemed in \$"),
                                   ),
                                 ),
                                 actions: <Widget>[
                                   TextButton(
-                                    child: const Text('Fechar'),
+                                    child: const Text('Close'),
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
@@ -216,7 +216,7 @@ class _StartedProjectState extends State<StartedProject> {
                           ),
                         ),
                         child: const Text(
-                          "Ler",
+                          "Read",
                           style: TextStyle(color: Colors.black),
                         ),
                       )
@@ -262,7 +262,7 @@ class _StartedProjectState extends State<StartedProject> {
                                   const EdgeInsets.symmetric(vertical: 16),
                                 ),
                               ),
-                              child: const Text('Validar',
+                              child: const Text('Validate',
                                   style: TextStyle(color: Colors.white)),
                             )
                           : TextButton(
@@ -363,14 +363,14 @@ class _StartedProjectState extends State<StartedProject> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "$meta $metaType por $fname",
+                      "$meta $metaType by $fname",
                       style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      "Criado por $creator",
+                      "Created by $creator",
                       style: const TextStyle(
                         fontSize: 16,
                         color: Colors.grey,
@@ -381,11 +381,11 @@ class _StartedProjectState extends State<StartedProject> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         BlocosInformativos(
-                          info: '$totalParticipants participando',
+                          info: '$totalParticipants participating',
                         ),
                         const SizedBox(width: 10),
                         BlocosInformativos(
-                          info: 'R\$$totalBet arrecadado',
+                          info: 'R\$$totalBet locked',
                         ),
                       ],
                     ),
@@ -399,7 +399,7 @@ class _StartedProjectState extends State<StartedProject> {
                         ),
                         const SizedBox(width: 2),
                         Text(
-                          "De $formatStart até $formatEnd",
+                          "By $formatStart to $formatEnd",
                           style: const TextStyle(
                             fontSize: 12,
                             color: Colors.grey,
@@ -453,7 +453,7 @@ class _StartedProjectState extends State<StartedProject> {
                                     const SizedBox(width: 2),
                                     timer > totalDays
                                         ? Text(
-                                            "${timerStart.toStringAsFixed(0)} dias para começar",
+                                            "${timerStart.toStringAsFixed(0)} days to start",
                                             textHeightBehavior:
                                                 const TextHeightBehavior(
                                                     applyHeightToFirstAscent:
@@ -467,7 +467,7 @@ class _StartedProjectState extends State<StartedProject> {
                                             ),
                                           )
                                         : Text(
-                                            "Restam ${timer.toStringAsFixed(0)} dias",
+                                            "Remains ${timer.toStringAsFixed(0)} days",
                                             textHeightBehavior:
                                                 const TextHeightBehavior(
                                                     applyHeightToFirstAscent:
@@ -492,7 +492,7 @@ class _StartedProjectState extends State<StartedProject> {
                                     ),
                                     Column(
                                       children: [
-                                        const Text("Concluído"),
+                                        const Text("Conclude"),
                                         Text(
                                           "$progressFull $metaType ",
                                           style: const TextStyle(
@@ -514,9 +514,9 @@ class _StartedProjectState extends State<StartedProject> {
                                     ),
                                     Column(
                                       children: [
-                                        const Text("Aposta"),
+                                        const Text("Bet"),
                                         Text(
-                                          "R\$ $myBetValue",
+                                          "\$ $myBetValue",
                                           style: const TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold),
@@ -556,7 +556,7 @@ class _StartedProjectState extends State<StartedProject> {
                         ? const Column(
                             children: [
                               Text(
-                                "Desafio Concluído",
+                                "Project concluded",
                                 style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
@@ -564,7 +564,7 @@ class _StartedProjectState extends State<StartedProject> {
                               ),
                               SizedBox(height: 4),
                               Text(
-                                "O desafio foi concluido com sucesso. Se você conclui mais de 85% das validações você receberá o valor da aposta de volta. Se concluiu 100% você receberá uma recompensa extra em créditos que poderam ser resgatados em R\$ se você não concluiu 85% Do desafio você perderá o valor da aposta.",
+                                "The challenge was completed successfully. If you complete more than 85% of the validations you will receive your bet amount back. If you completed 100% you will receive an extra reward in credits that can be redeemed in R\$. If you did not complete 85% of the challenge you will lose the bet amount.",
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.grey,

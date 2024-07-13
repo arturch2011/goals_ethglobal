@@ -89,7 +89,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
                               ),
                               Center(
                                   child: Text(
-                                "Projetos",
+                                "Projects",
                                 style: Theme.of(context).textTheme.titleLarge,
                               )),
                               IconButton(

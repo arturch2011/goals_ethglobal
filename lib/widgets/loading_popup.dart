@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goals_ethglobal/screens/wallet_screen.dart';
 
 class LoadingDialog extends StatelessWidget {
   const LoadingDialog({super.key});
@@ -84,14 +85,14 @@ class ErrorDialog extends StatelessWidget {
         error.contains('insuficiente')
             ? TextButton(
                 onPressed: () {
-                  // Navigator.of(context).pop();
-                  // Navigator.of(context).push(
-                  //   MaterialPageRoute(
-                  //     builder: (context) {
-                  //       return const Wallet();
-                  //     },
-                  //   ),
-                  // );
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const Wallet();
+                      },
+                    ),
+                  );
                 },
                 style: ButtonStyle(
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
