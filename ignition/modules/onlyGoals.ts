@@ -1,6 +1,6 @@
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
-const goalsTokenAddr = "0x6339240e1E2e1a1a8b6fD7f5200859668346e999";
+const goalsTokenAddr = "0x905a3dB053b868e9ECb0D368f43b1C825d9e485f";
 
 const onlyGoals = buildModule("onlyGoals",  (m) => {
     const goal = m.contract("Goals", [goalsTokenAddr]);
