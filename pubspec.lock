@@ -729,10 +729,11 @@ packages:
   web3dart:
     dependency: "direct main"
     description:
-      name: web3dart
-      sha256: "885e5e8f0cc3c87c09f160a7fce6279226ca41316806f7ece2001959c62ecced"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: e0e853f1afc8129c1076ed3e8cc3fe3f2563bc14
+      url: "https://github.com/Lucasch1/web3dart.git"
+    source: git
     version: "2.7.3"
   xdg_directories:
     dependency: transitive

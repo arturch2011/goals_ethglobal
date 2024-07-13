@@ -732,52 +732,51 @@ class _CreateScreenState extends State<CreateScreen> {
                     child: TextButton(
                       onPressed: () async {
                         showLoadingDialog(context);
-                        try {
-                          BigInt metaBigInt = BigInt.from(meta);
-                          BigInt totalMetaBigInt = BigInt.from(totalMeta);
-                          BigInt vezesBigInt = BigInt.from(vezes);
-                          // BigInt preFundBigInt = BigInt.from(preFund);
-                          // BigInt apostaBigInt = BigInt.from(aposta);
-                          BigInt dataInicialBigInt =
-                              BigInt.from(dataInicial.millisecondsSinceEpoch);
-                          BigInt dataFinalBigInt =
-                              BigInt.from(dataFinal.millisecondsSinceEpoch);
-                          BigInt numeroPessoasBigInt =
-                              BigInt.from(numeroPessoas);
-                          String result = await pinFile(pickedImage!.path);
-                          print("RESULTADOOOOOOOOOOOOOOOOOOOO");
-                          print(result);
-                          final String link =
-                              result.substring(8, result.length - 26);
-                          print(totalMeta);
-                          print("Linkkkkkkkkkkkkkkkkkkkk");
-                          print(link);
-                          imgList.add(link);
+                        // try {
+                        BigInt metaBigInt = BigInt.from(meta);
+                        BigInt totalMetaBigInt = BigInt.from(totalMeta);
+                        BigInt vezesBigInt = BigInt.from(vezes);
+                        // BigInt preFundBigInt = BigInt.from(preFund);
+                        // BigInt apostaBigInt = BigInt.from(aposta);
+                        BigInt dataInicialBigInt =
+                            BigInt.from(dataInicial.millisecondsSinceEpoch);
+                        BigInt dataFinalBigInt =
+                            BigInt.from(dataFinal.millisecondsSinceEpoch);
+                        BigInt numeroPessoasBigInt = BigInt.from(numeroPessoas);
+                        String result = await pinFile(pickedImage!.path);
+                        print("RESULTADOOOOOOOOOOOOOOOOOOOO");
+                        print(result);
+                        final String link =
+                            result.substring(8, result.length - 26);
+                        print(totalMeta);
+                        print("Linkkkkkkkkkkkkkkkkkkkk");
+                        print(link);
+                        imgList.add(link);
 
-                          await ethUtils.createGoal(
-                              nome,
-                              descricao,
-                              categoriaSelecionada,
-                              frequenciaSelecionada,
-                              totalMetaBigInt,
-                              aposta,
-                              dataInicialBigInt,
-                              dataFinalBigInt,
-                              isPublico,
-                              preFund,
-                              numeroPessoasBigInt,
-                              imgList,
-                              tipoValorAcrescido,
-                              vezesBigInt,
-                              metaBigInt);
-                          hideLoadingDialog(context);
-                          Navigator.of(context)
-                              .popUntil((route) => route.isFirst);
-                          showCheckDialog(context, 'Created with success !');
-                        } catch (e) {
-                          hideLoadingDialog(context);
-                          showErrorDialog(context, e.toString());
-                        }
+                        await ethUtils.createGoal(
+                            nome,
+                            descricao,
+                            categoriaSelecionada,
+                            frequenciaSelecionada,
+                            totalMetaBigInt,
+                            aposta,
+                            dataInicialBigInt,
+                            dataFinalBigInt,
+                            isPublico,
+                            preFund,
+                            numeroPessoasBigInt,
+                            imgList,
+                            tipoValorAcrescido,
+                            vezesBigInt,
+                            metaBigInt);
+                        hideLoadingDialog(context);
+                        Navigator.of(context)
+                            .popUntil((route) => route.isFirst);
+                        showCheckDialog(context, 'Created with success !');
+                        // } catch (e) {
+                        //   hideLoadingDialog(context);
+                        //   showErrorDialog(context, e.toString());
+                        // }
                       },
                       style: ButtonStyle(
                         shape:

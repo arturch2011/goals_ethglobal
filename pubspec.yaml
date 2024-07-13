@@ -37,9 +37,13 @@ dependencies:
     flutter_svg: ^2.0.10+1
     provider: ^6.1.2
     web3auth_flutter: ^5.0.3
+
     shared_preferences: ^2.2.3
     flutter_dotenv: ^5.1.0
-    web3dart: ^2.7.2
+    # web3dart: ^2.7.2
+    web3dart:
+        git:
+            url: https://github.com/Lucasch1/web3dart.git
     flutter_riverpod: ^1.0.3
     pinata:
         git:
