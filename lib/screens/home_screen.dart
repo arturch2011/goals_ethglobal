@@ -187,28 +187,6 @@ class HomeScreen extends ConsumerWidget {
                         ],
                       ),
                     ),
-                    // Padding(
-                    //   padding: const EdgeInsets.all(3),
-                    //   child: GestureDetector(
-                    //     onTap: () => {},
-                    //     child: const Row(
-                    //       mainAxisAlignment: MainAxisAlignment.end,
-                    //       children: [
-                    //         Text(
-                    //           'Ver todos os meus projetos',
-                    //           style: TextStyle(
-                    //             fontSize: 12,
-                    //           ),
-                    //         ),
-                    //         SizedBox(width: 5),
-                    //         Icon(
-                    //           Icons.arrow_forward_ios_rounded,
-                    //           size: 13,
-                    //         )
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
                     const SizedBox(height: 20),
                     const CarouselWithIndicatorDemo(),
                     const SizedBox(height: 20),

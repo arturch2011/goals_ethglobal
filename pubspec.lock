@@ -169,6 +169,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
+  erc20:
+    dependency: "direct main"
+    description:
+      name: erc20
+      sha256: "5b84e2273fd45e8713d885577bea612aec237cff6971720087d11036a57244cf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   fake_async:
     dependency: transitive
     description:
@@ -246,6 +254,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.1.0"
+  flutter_hooks:
+    dependency: "direct main"
+    description:
+      name: flutter_hooks
+      sha256: "6a126f703b89499818d73305e4ce1e3de33b4ae1c5512e3b8eab4b986f46774c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.18.6"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -305,7 +321,7 @@ packages:
     source: hosted
     version: "2.4.3"
   http:
-    dependency: "direct main"
+    dependency: "direct overridden"
     description:
       name: http
       sha256: "761a297c042deedc1ffbb156d6e2af13886bb305c2a343a4d972504cd67dd938"
@@ -766,6 +782,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.2"
+  uniswap:
+    dependency: "direct main"
+    description:
+      name: uniswap
+      sha256: "8a4e7a0919894df00ef808756df7b74594b97d6da5330e7cfee958e5df56d557"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   uuid:
     dependency: transitive
     description:
