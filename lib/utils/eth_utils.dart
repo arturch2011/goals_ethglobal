@@ -90,7 +90,7 @@ class EthereumUtils extends StateNotifier<bool> {
   final String projectId = dotenv.env['NEXT_PUBLIC_PROJECT_ID']!;
 
   final String _rpcUrl =
-      'https://polygon-mainnet.infura.io/v3/1bac17a54bf944d591a6be48d3c7514c';
+      'https://celo-alfajores.infura.io/v3/4e14c357c03146689a9f7e7f9b01df38';
 
   initialSetup() async {
     http.Client httpClient = http.Client();
