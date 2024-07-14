@@ -137,16 +137,25 @@ class ImagePreviewScreen extends StatelessWidget {
                               String filecoinHash =
                                   await sendFileCoins(imagePath);
                               bool isValid = await aiValidation(filecoinHash,
-                                  'Is this a red cup? Respond as true or false. It has to be a real image, not a generated one or animated.');
-                              await ethUtils.updateFrequency(
-                                  BigInt.from(index), filecoinHash);
-                              photoList.removeItem(index);
-                              photoList.addItem(PhotoDate(index, dia));
-                              await photoList.savePhotoList();
-                              hideLoadingDialog(context);
-                              Navigator.of(context)
-                                  .popUntil((route) => route.isFirst);
-                              showCheckDialog(context, 'Success !');
+                                  'Is that a blue bottle? Respond as true or false. It has to be a real image, not a generated one or animated.');
+
+                              if (isValid) {
+                                await ethUtils.updateFrequency(
+                                    BigInt.from(index), filecoinHash);
+                                photoList.removeItem(index);
+                                photoList.addItem(PhotoDate(index, dia));
+                                await photoList.savePhotoList();
+                                hideLoadingDialog(context);
+                                Navigator.of(context)
+                                    .popUntil((route) => route.isFirst);
+                                showCheckDialog(context, 'Success !');
+                              } else {
+                                hideLoadingDialog(context);
+                                Navigator.of(context)
+                                    .popUntil((route) => route.isFirst);
+                                showErrorDialog(context,
+                                    'The image does not correspond to the habit !');
+                              }
                             } catch (e) {
                               hideLoadingDialog(context);
                               showErrorDialog(context, e.toString());
