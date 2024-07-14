@@ -1,0 +1,17 @@
+{
+  "name": "goals-celo-rpc",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@celo/abis": "^11.0.0",
+    "viem": "^2.17.3"
+  }
+}
