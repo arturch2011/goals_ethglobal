@@ -39,8 +39,8 @@ class _MainProjectInfoState extends State<MainProjectInfo> {
         int metaU = 1;
         int meta = 0;
         int totalMeta = 1;
-        String frequency = 'Diária';
-        String fname = 'dia';
+        String frequency = 'Daily';
+        String fname = 'day';
         List<dynamic> goal = [];
 
         if (ethUtils.goals.isEmpty) {
@@ -120,7 +120,7 @@ class _MainProjectInfoState extends State<MainProjectInfo> {
                         ),
                       ),
                       Text(
-                        '$meta $metaType by $fname', // Valor do progresso (substitua pelo valor real)
+                        '$meta $metaType per $fname', // Valor do progresso (substitua pelo valor real)
                         style: const TextStyle(
                           fontSize: 13,
                         ),
@@ -132,14 +132,14 @@ class _MainProjectInfoState extends State<MainProjectInfo> {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
                             return const Text(
-                              'Bet R\$-- ', // Valor do progresso (substitua pelo valor real)
+                              'Bet \$-- ', // Valor do progresso (substitua pelo valor real)
                               style: TextStyle(
                                 fontSize: 10,
                               ),
                             );
                           } else if (snapshot.hasError) {
                             return const Text(
-                              'Bet R\$--', // Valor do progresso (substitua pelo valor real)
+                              'Bet \$--', // Valor do progresso (substitua pelo valor real)
                               style: TextStyle(
                                 fontSize: 10,
                               ),
@@ -149,7 +149,7 @@ class _MainProjectInfoState extends State<MainProjectInfo> {
                                 myBet[0] / BigInt.from(10).pow(18);
 
                             return Text(
-                              'Bet R\$$myBetValue ', // Valor do progresso (substitua pelo valor real)
+                              'Bet \$$myBetValue ', // Valor do progresso (substitua pelo valor real)
                               style: const TextStyle(
                                 fontSize: 10,
                               ),

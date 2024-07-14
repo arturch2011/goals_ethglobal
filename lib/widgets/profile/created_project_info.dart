@@ -25,7 +25,7 @@ class _CreatedCardState extends State<CreatedCard> {
         try {
           await ethUtils.startGoal(BigInt.from(index));
           hideLoadingDialog(context);
-          showCheckDialog(context, 'Iniciado com sucesso !');
+          showCheckDialog(context, 'Started with success !');
         } catch (e) {
           hideLoadingDialog(context);
           showErrorDialog(context, e.toString());
@@ -37,7 +37,7 @@ class _CreatedCardState extends State<CreatedCard> {
         try {
           await ethUtils.completeGoal(BigInt.from(index));
           hideLoadingDialog(context);
-          showCheckDialog(context, 'Finalizado com sucesso !');
+          showCheckDialog(context, 'Finalized with success !');
         } catch (e) {
           hideLoadingDialog(context);
           showErrorDialog(context, e.toString());
@@ -68,12 +68,12 @@ class _CreatedCardState extends State<CreatedCard> {
       final String frequency = goals[4];
       late String fname;
 
-      if (frequency == 'Diária') {
-        fname = 'dia';
-      } else if (frequency == 'Semanal') {
-        fname = 'semana';
-      } else if (frequency == 'Mensal') {
-        fname = 'mês';
+      if (frequency == 'Daily') {
+        fname = 'day';
+      } else if (frequency == 'Weekly') {
+        fname = 'week';
+      } else if (frequency == 'Monthly') {
+        fname = 'month';
       } else {
         fname = '-';
       }
@@ -96,7 +96,7 @@ class _CreatedCardState extends State<CreatedCard> {
               width: 5,
             ),
             Text(
-              '$meta $metaType por $fname', // Valor do progresso (substitua pelo valor real)
+              '$meta $metaType per $fname', // Valor do progresso (substitua pelo valor real)
               style: const TextStyle(
                 fontSize: 16,
               ),
@@ -148,27 +148,27 @@ class _CreatedCardState extends State<CreatedCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Valor inicial: R\$$preFound', // Valor do progresso (substitua pelo valor real)
+                  'Initial value: \$$preFound', // Valor do progresso (substitua pelo valor real)
                   style: const TextStyle(
                     fontSize: 10,
                   ),
                 ),
                 Text(
-                  'Valor acumulado: R\$$totalBet', // Valor do progresso (substitua pelo valor real)
+                  'Locked value: \$$totalBet', // Valor do progresso (substitua pelo valor real)
                   style: const TextStyle(
                     fontSize: 10,
                   ),
                 ),
                 Text(
-                  'Total participantes: $totalParticipants', // Valor do progresso (substitua pelo valor real)
+                  'Total participants: $totalParticipants', // Valor do progresso (substitua pelo valor real)
                   style: const TextStyle(
                     fontSize: 10,
                   ),
                 ),
                 Text(
                   isPublic
-                      ? 'Público'
-                      : 'Privado', // Valor do progresso (substitua pelo valor real)
+                      ? 'Public'
+                      : 'Private', // Valor do progresso (substitua pelo valor real)
                   style: const TextStyle(
                     fontSize: 10,
                   ),
@@ -178,7 +178,7 @@ class _CreatedCardState extends State<CreatedCard> {
             endTimer > 0
                 ? timer < 1
                     ? isStarted
-                        ? const Text('Projeto iniciado')
+                        ? const Text('Project started')
                         : TextButton(
                             onPressed: () => startGoal(),
                             style: TextButton.styleFrom(
@@ -193,13 +193,13 @@ class _CreatedCardState extends State<CreatedCard> {
                             ),
                           )
                     : const Text(
-                        'Espere a data de inicio\n para iniciar o projeto',
+                        'Whait the initial date to start the project',
                         style: TextStyle(
                           fontSize: 10,
                         ),
                       )
                 : isFinished
-                    ? const Text('Projeto finalizado')
+                    ? const Text('Project concluded')
                     : TextButton(
                         onPressed: () => endGoal(),
                         style: TextButton.styleFrom(
@@ -209,7 +209,7 @@ class _CreatedCardState extends State<CreatedCard> {
                           ),
                         ),
                         child: const Text(
-                          "Finalizar",
+                          "Finalize",
                           style: TextStyle(color: Colors.white),
                         ),
                       )

@@ -389,7 +389,7 @@ class _StartedProjectState extends State<StartedProject> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "$meta $metaType by $fname",
+                      "$meta $metaType per $fname",
                       style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -425,7 +425,7 @@ class _StartedProjectState extends State<StartedProject> {
                         ),
                         const SizedBox(width: 2),
                         Text(
-                          "By $formatStart to $formatEnd",
+                          "From $formatStart to $formatEnd",
                           style: const TextStyle(
                             fontSize: 12,
                             color: Colors.grey,

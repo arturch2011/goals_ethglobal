@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 final List<String> imgList = [
+  'assets/images/ethcover.png',
+  'assets/images/ethglobal.png',
   'assets/images/banner-estudos.png',
   'assets/images/banner-exercicio.png',
   'assets/images/banner-leitura.png',

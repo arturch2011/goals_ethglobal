@@ -33,8 +33,8 @@ class _ProjectCardState extends State<ProjectCard> {
         int metaU = 1;
         int meta = 0;
         String metaType = '--';
-        String frequency = 'Diária';
-        String fname = 'dia';
+        String frequency = 'Daily';
+        String fname = 'day';
         List<dynamic> goal = [];
 
         if (ethUtils.goals.isEmpty) {
@@ -153,7 +153,7 @@ class _ProjectCardState extends State<ProjectCard> {
                                 ],
                               ),
                               Text(
-                                '$meta $metaType by $fname', // Valor do progresso (substitua pelo valor real)
+                                '$meta $metaType per $fname', // Valor do progresso (substitua pelo valor real)
                                 style: const TextStyle(
                                   fontSize: 15,
                                 ),
